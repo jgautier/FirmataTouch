@@ -14,8 +14,7 @@ Ext.setup({
         });
         var myPanel;
         var pinsPanel= new Ext.Panel({
-            dock:'top'
-           ,scroll:'vertical'    
+           scroll:'vertical' 
         });
         var usbPortsPanel = new Ext.Panel({
            floating:true
@@ -55,8 +54,7 @@ Ext.setup({
                                             currentControl={xtype:'container',html:pins[i].value};
                                         }
                                         var pinToolbar=new Ext.Toolbar({
-                                            dock:'bottom'
-                                           ,height:75
+                                           height:75
                                            ,items:[
                                                {
                                                    xtype:'container'
@@ -89,6 +87,7 @@ Ext.setup({
                                     }
                                     pinsPanel.add(pinToolbar);
                                 }
+                                pinsPanel.doLayout();
                             });
                         }
                     }
@@ -113,8 +112,10 @@ Ext.setup({
             ]
         });
         myPanel = new Ext.Panel({
-            dockedItems: [myToolbar,pinsPanel],
+            dockedItems: [myToolbar],
             fullscreen : true,
+            layout:'fit',
+            items:[pinsPanel]
         });
     }
 });
