@@ -20,9 +20,10 @@ everyone.now.getPins=function(port,callback){
             everyone.now.MODES=currentBoard.MODES;
             callback(currentBoard.pins);
             currentBoard.on('analog-read',function(e){
-                everyone.now.analogRead(e.pin,e.data);
+                everyone.now.analogRead(e.pin,e.value);
             });
             currentBoard.on('digital-read',function(e){
+                console.log(e);
                 everyone.now.digitalRead(e.pin,e.value);
             });
         });
@@ -32,7 +33,7 @@ everyone.now.getPins=function(port,callback){
 };
 
 everyone.now.pinMode=function(pin,mode){
-    currentBoard.pinMode(number,mode);
+    currentBoard.pinMode(pin,mode);
 };
 everyone.now.digitalWrite=function(pin,value){
     currentBoard.digitalWrite(pin,value);
